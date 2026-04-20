@@ -1,57 +1,78 @@
-# Fully Connected Deep Learning Networks from Scratch
+# Deep Learning Neural Networks From Scratch (Python)
 
-This repository contains implementations of two fully connected deep learning neural networks for classification:
-- A **standard fully connected neural network**
-- A **ResNet-inspired version**
+This project implements deep learning classification models from scratch in Python, without PyTorch or TensorFlow.  
+It includes both a standard fully connected network and a residual-style fully connected network, along with gradient/Jacobian verification scripts.
 
-Both networks are implemented **from scratch in Python**, using only **NumPy** (without external deep learning libraries like PyTorch or TensorFlow). The networks have been tested on example datasets and achieved **around 95% accuracy**.
+## Core Components
 
-## Features
-- Fully connected architecture (no convolutional layers)
-- Implemented using only NumPy
-- Backpropagation and gradient computation verified through tests
-- Softmax activation with cross-entropy loss for classification
-- **SGD (Stochastic Gradient Descent) optimizer** for training
-- **ReLU activation function** in hidden layers
+- Softmax regression output layer
+- Cross-entropy loss
+- SGD with mini-batch training
+- Standard fully connected neural network
+- Residual neural network (fully connected ResNet-style blocks)
+- Gradient and Jacobian verification (component-level and whole-network)
 
 ## Repository Structure
-```
-├── src/                     # Core model/source code
+
+```text
+Deep_Learning_NN/
+├── src/                     # Core source/model code
 │   ├── standard_nn.py
 │   ├── resnet.py
 │   └── classifier_functions.py
-├── tests/                   # Gradient and whole-network verification scripts
-│   ├── gradients/
-│   └── integration/
-├── experiments/             # Training/demo scripts and exploratory runs
-├── data/example_datasets/   # .mat datasets used by scripts
-├── reports/assets/          # Report/figure assets
-├── Standard_NN.py           # Root compatibility wrapper (standard NN)
-├── ResNet.py                # Root compatibility wrapper (ResNet)
+├── tests/                   # Verification scripts
+│   ├── gradients/           # Gradient/Jacobian checks
+│   └── integration/         # Whole-network gradient checks
+├── experiments/             # Training and exploratory scripts
+├── data/
+│   └── example_datasets/    # .mat datasets used by training scripts
+├── reports/
+│   └── assets/              # Report figures/assets (full report planned here)
+├── Standard_NN.py           # Root compatibility wrapper
+├── ResNet.py                # Root compatibility wrapper
+├── requirements.txt
 └── README.md
 ```
 
-## Training and Testing
-The networks have been trained on example datasets stored in `data/example_datasets/`. Training is performed using **stochastic gradient descent (SGD)** with backpropagation. The models achieved **around 95% accuracy** on the provided datasets.
+## Results
 
-## Running the Code
-To train the networks, run the respective scripts:
+On the included example datasets, the project has previously achieved around **95% accuracy** (as documented in the original project notes).
+
+## How To Run
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run training:
+
 ```bash
 python Standard_NN.py
-```
-or
-```bash
 python ResNet.py
 ```
-Ensure that the datasets are available in `data/example_datasets/`.
 
-## Dependencies
-The only dependency required to run the code is:
+Run verification scripts:
+
 ```bash
-pip install numpy scipy
+python tests/gradients/grad_test_matrix_weights.py
+python tests/gradients/grad_test_matrix_bias.py
+python tests/gradients/standard_derivatives_test_v3.py
+python tests/gradients/resnet_blocks_test.py
+python tests/integration/whole_network_test.py
+python tests/integration/resnet_whole_network_test.py
 ```
-(No deep learning frameworks are used.)
+
+## Datasets
+
+Datasets are stored in `data/example_datasets/` as `.mat` files.
+
+## Report
+
+A full project report and related assets will be maintained under `reports/`.
 
 ## License
+
 This project is released under the MIT License.
 
