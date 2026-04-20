@@ -1,7 +1,15 @@
 # Deep Learning Neural Networks From Scratch (Python)
 
-This project implements deep learning classification models from scratch in Python, without PyTorch or TensorFlow.  
-It includes both a standard fully connected network and a residual-style fully connected network, along with gradient/Jacobian verification scripts.
+## Overview
+
+This project was built to understand how modern neural networks work at a low level by implementing all components from scratch using NumPy.
+
+Instead of relying on deep learning frameworks, the focus is on:
+- deriving and implementing forward and backward passes manually
+- verifying gradients using numerical methods
+- understanding optimization behavior in practice
+
+The project includes both a standard fully connected network and a residual architecture, along with extensive correctness validation.
 
 ## Core Components
 
@@ -37,13 +45,45 @@ Deep_Learning_NN/
 
 ## Results
 
-From the project report, training on the included datasets reached:
+Training on the provided datasets produced the following results:
 
-- Around **92.5%** average accuracy on Peaks (best standard-network setting reported)
-- Around **95%** average accuracy on GMM (standard network)
-- Up to **96%** average accuracy on GMM (ResNet configuration)
+- **Peaks dataset**: ~92.5% accuracy (standard network)
+- **GMM dataset**: ~95% accuracy (standard network)
+- **GMM dataset (ResNet)**: up to ~96% accuracy
 
-Gradient/Jacobian verification scripts show the expected first-order and second-order error trends, supporting correctness of the implemented derivatives.
+In addition to accuracy, gradient and Jacobian verification tests demonstrate correct implementation:
+- first-order error decreases linearly
+- second-order error decreases quadratically
+
+These results confirm correctness of both the forward pass and backpropagation implementation.
+
+### Standard Neural Network (Peaks Dataset)
+
+<img src="reports/assets/standard_nn_peaks.png" width="600"/>
+
+Training shows stable convergence with close alignment between training and validation accuracy, indicating good generalization.
+
+### ResNet Architecture (GMM Dataset)
+
+<img src="reports/assets/resnet_gmm.png" width="600"/>
+
+The residual architecture achieves faster convergence and higher final accuracy, demonstrating the benefit of skip connections in deeper networks.
+
+Gradient and Jacobian verification scripts show the expected first-order and second-order error trends, supporting correctness of the implemented derivatives.
+
+## Key Engineering Aspects
+
+- Implemented full forward and backward passes manually using NumPy
+- Verified gradients using finite-difference methods (Taylor expansion checks)
+- Built both standard and residual network architectures
+- Explored effects of:
+  - learning rate
+  - batch size
+  - network depth and width
+- Structured the project with clear separation between:
+  - core logic (`src/`)
+  - verification (`tests/`)
+  - experiments (`experiments/`)
 
 ## How To Run
 
