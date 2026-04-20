@@ -16,38 +16,23 @@ Both networks are implemented **from scratch in Python**, using only **NumPy** (
 
 ## Repository Structure
 ```
-├── Components_tests/        # Tests for individual components of the networks
-│   ├── test_activation.py   # Tests for activation functions
-│   ├── test_loss.py         # Tests for loss functions
-│   └── ...
-│
-├── ExampleDatasets/         # Example datasets in .mat format
-│   ├── dataset1.mat
-│   ├── dataset2.mat
-│   └── ...
-│
-├── ResNet_tests/            # Tests specific to the ResNet implementation
-│   ├── test_resnet_forward.py
-│   ├── test_resnet_backward.py
-│   └── ...
-│
-├── Standard_NN_tests/       # Tests specific to the standard neural network
-│   ├── test_standard_nn_forward.py
-│   ├── test_standard_nn_backward.py
-│   └── ...
-│
-├── Whole_Network_tests/     # Tests involving the entire network architectures
-│   ├── test_training_loop.py
-│   ├── test_inference.py
-│   └── ...
-│
-├── ResNet.py                # ResNet-style fully connected network implementation
-├── Standard_NN.py           # Standard fully connected network implementation
-└── README.md                # This file
+├── src/                     # Core model/source code
+│   ├── standard_nn.py
+│   ├── resnet.py
+│   └── classifier_functions.py
+├── tests/                   # Gradient and whole-network verification scripts
+│   ├── gradients/
+│   └── integration/
+├── experiments/             # Training/demo scripts and exploratory runs
+├── data/example_datasets/   # .mat datasets used by scripts
+├── reports/assets/          # Report/figure assets
+├── Standard_NN.py           # Root compatibility wrapper (standard NN)
+├── ResNet.py                # Root compatibility wrapper (ResNet)
+└── README.md
 ```
 
 ## Training and Testing
-The networks have been trained on example datasets stored in the `ExampleDatasets/` folder. Training is performed using **stochastic gradient descent (SGD)** with backpropagation. The models achieved **around 95% accuracy** on the provided datasets.
+The networks have been trained on example datasets stored in `data/example_datasets/`. Training is performed using **stochastic gradient descent (SGD)** with backpropagation. The models achieved **around 95% accuracy** on the provided datasets.
 
 ## Running the Code
 To train the networks, run the respective scripts:
@@ -58,7 +43,7 @@ or
 ```bash
 python ResNet.py
 ```
-Ensure that the datasets are available in the `ExampleDatasets/` folder.
+Ensure that the datasets are available in `data/example_datasets/`.
 
 ## Dependencies
 The only dependency required to run the code is:

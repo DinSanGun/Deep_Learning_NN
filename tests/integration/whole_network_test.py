@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from Standard_NN_L_layers import whole_network_gradient, whole_network_test
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from experiments.standard_nn_l_layers_demo import whole_network_gradient, whole_network_test
 
 def label_generator(classes, samples):
     # Create an NxN matrix of zeros

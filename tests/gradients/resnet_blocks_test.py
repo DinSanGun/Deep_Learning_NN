@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from ResNet import backpropagation_resnet, initialize_resnet, jacobian_tests_block_i
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from experiments.resnet_random_demo import backpropagation_resnet, initialize_resnet, jacobian_tests_block_i
 
 def label_generator(classes, samples):
     # Create an NxN matrix of zeros

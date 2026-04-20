@@ -2,10 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from scipy.io import loadmat
-from Part_1.classifier_functions import *
+from pathlib import Path
+from src.classifier_functions import *
 
 # Load data from the MATLAB file
-data = loadmat('Data/PeaksData.mat')
+data_path = Path(__file__).resolve().parents[1] / "data" / "example_datasets" / "PeaksData.mat"
+data = loadmat(data_path)
 X_training = data['Yt']  # Training input matrix
 Y_training = data['Ct']  # Training true labels matrix
 X_validation = data['Yv']    # Validation input matrix

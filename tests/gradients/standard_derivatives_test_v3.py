@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from Part_2_1.Standard_NN import backpropagation, initialize_network, jacobian_test_layer_i
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from experiments.standard_nn_random_demo import backpropagation, initialize_network, jacobian_test_layer_i
 
 def label_generator(classes, samples):
     # Create an NxN matrix of zeros
