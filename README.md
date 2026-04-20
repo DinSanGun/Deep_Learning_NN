@@ -27,7 +27,8 @@ Deep_Learning_NN/
 ├── data/
 │   └── example_datasets/    # .mat datasets used by training scripts
 ├── reports/
-│   └── assets/              # Report figures/assets (full report planned here)
+│   ├── Deep Learning Project Report.pdf
+│   └── assets/              # Report figures/assets
 ├── Standard_NN.py           # Root compatibility wrapper
 ├── ResNet.py                # Root compatibility wrapper
 ├── requirements.txt
@@ -36,7 +37,13 @@ Deep_Learning_NN/
 
 ## Results
 
-On the included example datasets, the project has previously achieved around **95% accuracy** (as documented in the original project notes).
+From the project report, training on the included datasets reached:
+
+- Around **92.5%** average accuracy on Peaks (best standard-network setting reported)
+- Around **95%** average accuracy on GMM (standard network)
+- Up to **96%** average accuracy on GMM (ResNet configuration)
+
+Gradient/Jacobian verification scripts show the expected first-order and second-order error trends, supporting correctness of the implemented derivatives.
 
 ## How To Run
 
@@ -70,7 +77,16 @@ Datasets are stored in `data/example_datasets/` as `.mat` files.
 
 ## Report
 
-A full project report and related assets will be maintained under `reports/`.
+The full write-up is available at:
+
+- [`reports/Deep Learning Project Report.pdf`](reports/Deep%20Learning%20Project%20Report.pdf)
+
+It documents:
+
+- Derivation and implementation details for softmax, cross-entropy, and SGD
+- Layer/block-level Jacobian and gradient verification
+- Whole-network gradient checks
+- Hyperparameter exploration and training outcomes on Peaks and GMM
 
 ## License
 
